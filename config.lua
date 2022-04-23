@@ -115,33 +115,33 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { command = "black", filetypes = { "python" } },
-  { command = "isort", filetypes = { "python" } },
-  {
-    -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
-    command = "prettier",
-    ---@usage arguments to pass to the formatter
-    -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-    extra_args = { "--print-with", "100" },
-    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "typescript", "typescriptreact" },
-  },
+  -- { command = "black", filetypes = { "python" } },
+  -- { command = "isort", filetypes = { "python" } },
+  -- {
+  -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
+  -- command = "prettier",
+  ---@usage arguments to pass to the formatter
+  -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
+  -- extra_args = { "--print-with", "100" },
+  ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+  -- filetypes = { "typescript", "typescriptreact" },
+  -- },
 }
 
 -- -- set additional linters
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   --   { command = "flake8", filetypes = { "python" } },
-  {
-    --     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
-    command = "shellcheck",
-    --     ---@usage arguments to pass to the formatter
-    --     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-    extra_args = { "--severity", "warning" },
-  },
-  {
-    exe = "eslint",
-  }
+  -- {
+  --     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
+  -- command = "shellcheck",
+  --     ---@usage arguments to pass to the formatter
+  --     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
+  -- extra_args = { "--severity", "warning" },
+  -- },
+  -- {
+  -- exe = "eslint",
+  -- }
   --   {
   --     command = "codespell",
   --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
@@ -162,7 +162,15 @@ lvim.plugins = {
   { "tpope/vim-repeat" },
   { "christoomey/vim-tmux-navigator" },
   { "preservim/nerdtree" },
+  { "prettier/vim-prettier" },
   { "Xuyuanp/nerdtree-git-plugin" },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
+  },
+  -- { "neoclide/coc.nvim" },
   {
     "nathom/filetype.nvim",
     config = function()
@@ -171,7 +179,14 @@ lvim.plugins = {
   },
   {
     "folke/todo-comments.nvim",
-    event = "BufRead",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
   },
   {
     "folke/persistence.nvim",
@@ -256,6 +271,7 @@ lvim.plugins = {
       }, })
     end,
     requires = "nvim-treesitter/nvim-treesitter" },
+  -- { "lukas-reineke/lsp-format.nvim" },
   -- { "airblade/vim-gitgutter" },
 }
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -267,6 +283,9 @@ lvim.plugins = {
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.wo.relativenumber = true
+
+-- This shouold autoformat on save
+-- vim.api.nvim_command([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
 
 -- this should update a file as soon as it has changed on disk
 vim.api.nvim_command([[
