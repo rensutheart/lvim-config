@@ -11,7 +11,7 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "onedarker" -- onedarker tokyonight
 lvim.builtin.lualine.style = "default"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -41,7 +41,11 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 --   },
 -- }
 
+
 -- Use which-key to add extra bindings with the leader-key prefix
+
+
+-- lvim.builtin.which_key.mappings["F"] = { "<cmd>lua require('telescope.builtin').git_files{}<CR>", "Find git files" }
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Trouble",
