@@ -168,8 +168,8 @@ lvim.plugins = {
   { "preservim/nerdtree" },
   { "prettier/vim-prettier" },
   { "Xuyuanp/nerdtree-git-plugin" },
-  {"jpalardy/vim-slime"},
-  {"hanschen/vim-ipython-cell"},
+  { "jpalardy/vim-slime" },
+  { "hanschen/vim-ipython-cell" },
   {
     "windwp/nvim-ts-autotag",
     config = function()
@@ -299,7 +299,7 @@ vim.api.nvim_command([[
   ]])
 
 
-vim.g.slime_target="tmux"
+vim.g.slime_target = "tmux"
 
 lvim.builtin.lualine.on_config_done = function(lualine)
   local config = lualine.get_config()
