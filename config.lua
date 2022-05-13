@@ -277,7 +277,16 @@ lvim.plugins = {
       }, })
     end,
     requires = "nvim-treesitter/nvim-treesitter" },
-  { "kkoomen/vim-doge" },
+  -- { "kkoomen/vim-doge" },
+  {
+    "danymat/neogen",
+    config = function()
+      require('neogen').setup { enabled = true }
+    end,
+    requires = "nvim-treesitter/nvim-treesitter",
+    -- Uncomment next line if you want to follow only stable versions
+    -- tag = "*"
+  }
   -- { "heavenshell/vim-jsdoc", setup = function()
   -- vim.g.jsdoc_lehre_path = '/opt/homebrew/bin/lehre'
   -- end,
@@ -294,6 +303,10 @@ lvim.plugins = {
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.wo.relativenumber = true
+
+
+local opts = { noremap = true, silent = true }
+vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", opts)
 
 -- This shouold autoformat on save
 -- vim.api.nvim_command([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
