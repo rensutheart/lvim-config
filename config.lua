@@ -277,6 +277,7 @@ lvim.plugins = {
       }, })
     end,
     requires = "nvim-treesitter/nvim-treesitter" },
+  { "kkoomen/vim-doge" }
   -- { "lukas-reineke/lsp-format.nvim" },
   -- { "airblade/vim-gitgutter" },
 }
