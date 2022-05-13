@@ -277,7 +277,11 @@ lvim.plugins = {
       }, })
     end,
     requires = "nvim-treesitter/nvim-treesitter" },
-  { "kkoomen/vim-doge" }
+  { "kkoomen/vim-doge" },
+  -- { "heavenshell/vim-jsdoc", setup = function()
+  -- vim.g.jsdoc_lehre_path = '/opt/homebrew/bin/lehre'
+  -- end,
+  -- }
   -- { "lukas-reineke/lsp-format.nvim" },
   -- { "airblade/vim-gitgutter" },
 }
