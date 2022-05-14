@@ -119,7 +119,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  -- { command = "black", filetypes = { "python" } },
+  { command = "black", filetypes = { "python" } },
   -- { command = "isort", filetypes = { "python" } },
   -- {
   -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
@@ -135,7 +135,7 @@ formatters.setup {
 -- -- set additional linters
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
-  --   { command = "flake8", filetypes = { "python" } },
+  { command = "flake8", filetypes = { "python" } },
   -- {
   --     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
   -- command = "shellcheck",
@@ -146,16 +146,16 @@ linters.setup {
   -- {
   -- exe = "eslint",
   -- }
-  --   {
-  --     command = "codespell",
-  --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-  --     filetypes = { "javascript", "python" },
-  --   },
+  {
+    command = "codespell",
+    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+    filetypes = { "javascript", "python" },
+  },
 }
 
 -- Additional Plugins
 lvim.plugins = {
-  { "folke/tokyonight.nvim" },
+  -- { "folke/tokyonight.nvim" },
   {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
@@ -165,17 +165,11 @@ lvim.plugins = {
   { "tpope/vim-surround" },
   { "tpope/vim-repeat" },
   { "christoomey/vim-tmux-navigator" },
-  { "preservim/nerdtree" },
+  -- { "preservim/nerdtree" },
+  -- { "Xuyuanp/nerdtree-git-plugin" },
   { "prettier/vim-prettier" },
-  { "Xuyuanp/nerdtree-git-plugin" },
-  { "jpalardy/vim-slime" },
-  { "hanschen/vim-ipython-cell" },
-  {
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require('nvim-ts-autotag').setup()
-    end,
-  },
+  -- { "jpalardy/vim-slime" },
+  -- { "hanschen/vim-ipython-cell" },
   -- { "neoclide/coc.nvim" },
   {
     "nathom/filetype.nvim",
@@ -193,6 +187,12 @@ lvim.plugins = {
         -- refer to the configuration section below
       }
     end
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
   },
   {
     "folke/persistence.nvim",
@@ -273,7 +273,7 @@ lvim.plugins = {
   { "SmiteshP/nvim-gps",
     config = function()
       require("nvim-gps").setup({ icons = {
-        ["container-name"] = "📦",
+        ["container-name"] = "üì¶",
       }, })
     end,
     requires = "nvim-treesitter/nvim-treesitter" },
@@ -287,6 +287,7 @@ lvim.plugins = {
     -- Uncomment next line if you want to follow only stable versions
     -- tag = "*"
   }
+
   -- { "heavenshell/vim-jsdoc", setup = function()
   -- vim.g.jsdoc_lehre_path = '/opt/homebrew/bin/lehre'
   -- end,
