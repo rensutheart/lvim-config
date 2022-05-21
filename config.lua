@@ -149,7 +149,7 @@ linters.setup {
   {
     command = "codespell",
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "javascript", "python" },
+    -- filetypes = { "javascript", "python" },
   },
 }
 
@@ -165,8 +165,8 @@ lvim.plugins = {
   { "tpope/vim-surround" },
   { "tpope/vim-repeat" },
   { "christoomey/vim-tmux-navigator" },
-  -- { "preservim/nerdtree" },
-  -- { "Xuyuanp/nerdtree-git-plugin" },
+  { "preservim/nerdtree" },
+  { "Xuyuanp/nerdtree-git-plugin" },
   { "prettier/vim-prettier" },
   -- { "jpalardy/vim-slime" },
   -- { "hanschen/vim-ipython-cell" },
@@ -286,7 +286,10 @@ lvim.plugins = {
     requires = "nvim-treesitter/nvim-treesitter",
     -- Uncomment next line if you want to follow only stable versions
     -- tag = "*"
-  }
+  },
+  -- {
+  --   "vimwiki/vimwiki"
+  -- }
 
   -- { "heavenshell/vim-jsdoc", setup = function()
   -- vim.g.jsdoc_lehre_path = '/opt/homebrew/bin/lehre'
